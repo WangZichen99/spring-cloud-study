@@ -1,0 +1,31 @@
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origin-patterns: '*'
+            allowed-headers: '*'
+            allowed-methods: '*'
+      routes:
+        - id: order
+          uri: lb://service-order
+          predicates:
+            - Path=/order/**
+          filters:
+            - AddToken=Token, jwt
+        - id: vip
+          uri: https://www.taobao.com
+          predicates:
+            - Path=/taobao
+            - name: Param
+              args:
+                param: type
+                value: vip
+        - id: product
+          uri: lb://service-product
+          predicates:
+            - name: Path
+              args:
+                patterns: /product/**
+                matchTrailingSlash: true

@@ -1,0 +1,21 @@
+server:
+  port: 8000
+logging:
+  level:
+    com.cloud.order.feign: debug
+spring:
+  application:
+    name: service-order
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848 # 注册中心地址
+      config:
+        namespace: dev # 命名空间
+        group: order
+  # 导入配置中心配置
+  config:
+    import:
+#      - application-dubbo.yml
+      - application-feign.yml
+      - nacos:common.yml
+      - nacos:database.yml

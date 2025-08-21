@@ -1,0 +1,7 @@
+dubbo:
+  application:
+    name: ${spring.application.name}
+    logger: slf4j
+    qos-port: 33333
+  registry:
+    address: nacos://${spring.cloud.nacos.server-addr}

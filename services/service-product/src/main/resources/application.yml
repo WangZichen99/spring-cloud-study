@@ -1,0 +1,33 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: service-product
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      config:
+        import-check:
+          enabled: false # 关闭导入检查
+    sentinel:
+      eager: true
+      transport:
+        dashboard: localhost:8080
+
+#logging:
+#  file:
+#    name: product-service.log
+#    # path: /var/log/myapp # 如果需要指定路径
+#  level:
+#    root: DEBUG
+#    org.apache.dubbo: DEBUG
+#    com.cloud.product: DEBUG
+
+#dubbo:
+#  application:
+#    name: ${spring.application.name}
+#  protocol:
+#    name: tri
+#    port: 50052
+#  registry:
+#    address: nacos://${spring.cloud.nacos.server-addr}
